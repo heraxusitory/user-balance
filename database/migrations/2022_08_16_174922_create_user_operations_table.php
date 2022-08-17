@@ -33,8 +33,8 @@ class CreateUserOperationsTable extends Migration
                 'top-up',
                 'payout'
             ]);
-            $table->string('country_code');
-            $table->string('country_name');
+            $table->string('country_code')->nullable();
+            $table->string('country_name')->nullable();
             $table->timestamps();
         });
     }
