@@ -10,7 +10,6 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -21,7 +20,8 @@
 </head>
 <body>
 <div id="app">
-    <example-component></example-component>
 </div>
+<script src="{{ mix('js/app.js') }}"></script>
+
 </body>
 </html>
