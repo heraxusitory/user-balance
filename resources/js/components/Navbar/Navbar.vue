@@ -4,13 +4,14 @@
             <b-navbar-nav>
                <b-nav-item to="/profile">Профиль</b-nav-item>
                <b-nav-item to="/operations">История операций</b-nav-item>
-               <b-nav-item to="/sign-in">Логин</b-nav-item>
+               <b-nav-item v-if="authenticated" to="/sign-in">Логин</b-nav-item>
             </b-navbar-nav>
         </b-navbar>
     </div>
 </template>
 
 <script>
+
 import {mapGetters} from "vuex";
 
 export default {
@@ -23,10 +24,10 @@ export default {
 
     },
     computed: {
-        // authenticated() {
-        //     console.log(this.$store)
-        //     return this.$store.getters.auth.authenticated;
-        // }
+        ...mapGetters('auth',[
+            'authenticated',
+            // ...
+        ])
     }
 }
 </script>

@@ -41,7 +41,6 @@ export default {
                 this.signIn()
                 this.$router.push('index');
             }).catch(({response: {data}}) => {
-                alert(data.message)
             }).finally(() => {
                 this.processing = false
             })
