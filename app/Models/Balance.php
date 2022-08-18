@@ -14,4 +14,9 @@ class Balance extends Model
         'amount',
         'currency',
     ];
+
+    public function operations()
+    {
+        return $this->hasMany(Operation::class, 'user_balance_id', 'id');
+    }
 }
