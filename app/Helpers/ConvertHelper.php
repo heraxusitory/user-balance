@@ -22,7 +22,7 @@ class ConvertHelper
      */
     private static function getInstance(): ConvertHelper
     {
-        if (self::$instance === null) {
+        if (is_null(self::$instance)) {
             self::$instance = new self();
         }
 

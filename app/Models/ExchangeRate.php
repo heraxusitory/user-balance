@@ -11,5 +11,5 @@ class ExchangeRate extends Model
 
     protected $table = 'exchange_rates';
 
-    protected $fillable = ['currency, rate'];
+    protected $fillable = ['currency', 'rate'];
 }

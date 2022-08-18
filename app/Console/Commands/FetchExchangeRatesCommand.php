@@ -44,7 +44,7 @@ class FetchExchangeRatesCommand extends Command
 
         if (isset($rates['rates'])) {
             foreach ($rates['rates'] as $cur => $value) {
-                ExchangeRate::query()->where('currency', $cur)->update(['rate' => $value]);
+                $exch_rate = ExchangeRate::query()->updateOrCreate(['currency' => $cur,], ['rate' => $value]);
                 $this->info("Save: {$cur}");
             }
         } else {
