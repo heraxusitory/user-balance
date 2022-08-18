@@ -3,9 +3,8 @@
         <b-navbar type="dark" variant="dark">
             <b-navbar-nav>
                <b-nav-item to="/profile">Профиль</b-nav-item>
-                <router-link to="/operations"><b-nav-item>История операций</b-nav-item></router-link>
-<!--                <router-link to="/sign-out"><b-nav-item>Выйти</b-nav-item></router-link>-->
-                <router-link to="/sign-in"><b-nav-item>Логин</b-nav-item></router-link>
+               <b-nav-item to="/operations">История операций</b-nav-item>
+               <b-nav-item to="/sign-in">Логин</b-nav-item>
             </b-navbar-nav>
         </b-navbar>
     </div>
