@@ -18,6 +18,8 @@
 
 <script>
 import {mapActions} from "vuex";
+import axios from "axios";
+import {routes} from "../router";
 
 export default {
     data() {
@@ -37,10 +39,11 @@ export default {
             event.preventDefault()
             this.processing = true
             await axios.get('/sanctum/csrf-cookie').then(response => {
-                axios.post('api/auth/login', this.form).then(({data}) => {
+                axios.post('api/auth/login', this.form).then((data) => {
                     this.signIn()
                     this.$router.push('/profile');
-                }).catch(({response: {data}}) => {
+                }).catch((error) => {
+                    console.log(error)
                 }).finally(() => {
                     this.processing = false
                 })

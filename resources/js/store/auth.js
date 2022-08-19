@@ -25,16 +25,13 @@ export default {
     },
     actions: {
         login({commit}) {
-            return axios.get('/sanctum/csrf-cookie').then(response => {
-                axios.get('/api/user').then(({data}) => {
-                    commit('SET_USER', data)
-                    commit('SET_AUTHENTICATED', true)
-                    routes.push({name: 'dashboard'})
-                }).catch(({response: {data}}) => {
-                    commit('SET_USER', {})
-                    commit('SET_AUTHENTICATED', false)
-                })
-            });
+            axios.get('/api/user').then(({data}) => {
+                commit('SET_USER', data)
+                commit('SET_AUTHENTICATED', true)
+            }).catch(({response: {data}}) => {
+                commit('SET_USER', {})
+                commit('SET_AUTHENTICATED', false)
+            })
         },
         logout({commit}) {
             commit('SET_USER', {})
