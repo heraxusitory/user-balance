@@ -27,7 +27,7 @@
         "bootstrap-vue": "^2.22.0",
         "vue-axios": "^3.4.1",
         "vue-router": "^3.4.*",
-        "vuex": "^4.0.2",
+        "vuex": "^3.6.2",
         "vuex-persistedstate": "^4.1.0"
     }
 }

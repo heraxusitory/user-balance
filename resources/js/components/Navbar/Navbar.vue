@@ -2,9 +2,11 @@
     <div>
         <b-navbar type="dark" variant="dark">
             <b-navbar-nav>
-               <b-nav-item to="/profile">Профиль</b-nav-item>
-               <b-nav-item to="/operations">История операций</b-nav-item>
-               <b-nav-item v-if="authenticated" to="/sign-in">Логин</b-nav-item>
+                <b-nav-item v-if="!authenticated" to="/sign-in">Логин</b-nav-item>
+                <template v-else>
+                    <b-nav-item to="/profile">Профиль</b-nav-item>
+                    <b-nav-item to="/operations">История операций</b-nav-item>
+                </template>
             </b-navbar-nav>
         </b-navbar>
     </div>
@@ -17,14 +19,11 @@ import {mapGetters} from "vuex";
 export default {
     name: "Navbar",
     data() {
-      return {
-      }
+        return {}
     },
-    methods: {
-
-    },
+    methods: {},
     computed: {
-        ...mapGetters('auth',[
+        ...mapGetters('auth', [
             'authenticated',
             // ...
         ])

@@ -3,11 +3,11 @@
         <div class="card-body">
             <form @submit.prevent>
                 <div class="form-group">
-                    <input type="email" class="form-control form-control-lg" placeholder="Почта"/>
+                    <input type="email" class="form-control form-control-lg" placeholder="Почта" v-model.trim="form.email"/>
                 </div>
 
                 <div class="form-group">
-                    <input type="password" class="form-control form-control-lg" placeholder="Пароль"/>
+                    <input type="password" class="form-control form-control-lg" placeholder="Пароль" v-model.trim="form.password"/>
                 </div>
 
                 <button class="w-100 btn btn-lg btn-primary" @click="submit">Войти</button>
@@ -36,14 +36,15 @@ export default {
         async submit(event) {
             event.preventDefault()
             this.processing = true
-            await axios.get('/sanctum/csrf-cookie')
-            await axios.post('api/auth/login', this.form).then(({data}) => {
-                this.signIn()
-                this.$router.push('index');
-            }).catch(({response: {data}}) => {
-            }).finally(() => {
-                this.processing = false
-            })
+            await axios.get('/sanctum/csrf-cookie').then(response => {
+                axios.post('api/auth/login', this.form).then(({data}) => {
+                    this.signIn()
+                    this.$router.push('/profile');
+                }).catch(({response: {data}}) => {
+                }).finally(() => {
+                    this.processing = false
+                })
+            });
         }
     }
 }

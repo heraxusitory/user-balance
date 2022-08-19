@@ -34,7 +34,6 @@ Vue.use(VueAxios, axios);
 const router = new VueRouter({
     mode: 'history',
     routes: routes,
-    store:store
 });
 /**
  * The following block of code may be used to automatically register your
@@ -58,5 +57,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
     router: router,
-    render: h => h(App)
+    render: h => h(App),
+    store:store
 });
