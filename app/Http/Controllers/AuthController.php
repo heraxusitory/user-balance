@@ -22,4 +22,10 @@ class AuthController extends Controller
         return response()->json($user, Response::HTTP_OK);
 
     }
+
+    public function logout(Request $request)
+    {
+        Auth::guard('web')->logout();
+        return response()->json();
+    }
 }

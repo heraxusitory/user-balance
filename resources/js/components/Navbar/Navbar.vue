@@ -6,6 +6,7 @@
                 <template v-else>
                     <b-nav-item to="/profile">Профиль</b-nav-item>
                     <b-nav-item to="/operations">История операций</b-nav-item>
+                    <b-nav-item @click="logout">Выйти</b-nav-item>
                 </template>
             </b-navbar-nav>
         </b-navbar>
@@ -14,14 +15,29 @@
 
 <script>
 
-import {mapGetters} from "vuex";
+import {mapActions, mapGetters} from "vuex";
+import axios from "axios";
 
 export default {
     name: "Navbar",
     data() {
         return {}
     },
-    methods: {},
+    methods: {
+        ...mapActions({
+            signOut: 'auth/logout'
+        }),
+       async logout() {
+                axios.post('api/auth/logout', this.form).then((data) => {
+                    this.signOut()
+                    this.$router.push('/sign-in');
+                }).catch((error) => {
+                    console.log(error)
+                }).finally(() => {
+                    this.processing = false
+            });
+        },
+    },
     computed: {
         ...mapGetters('auth', [
             'authenticated',
